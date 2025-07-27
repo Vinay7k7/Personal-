@@ -32,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <Card 
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="group relative flex h-full transform flex-col overflow-hidden rounded-lg border-2 border-border bg-card shadow-lg transition-transform duration-300 hover:scale-105"
+        className="group relative flex h-full transform flex-col overflow-hidden rounded-lg border-2 border-border bg-card shadow-lg transition-all duration-300 hover:scale-105 hover:border-primary/60"
       >
         <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" 
              style={{
