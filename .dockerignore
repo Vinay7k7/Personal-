@@ -1,0 +1,22 @@
+# Dockerignore file
+
+# Git
+.git
+.gitignore
+
+# node.js
+node_modules/
+npm-debug.log
+.npm
+
+# next.js
+.next/
+out/
+
+# editor
+.vscode
+.idea
+
+# misc
+*.local
+.DS_Store
