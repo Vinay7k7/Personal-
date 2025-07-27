@@ -8,6 +8,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Header />
       <main className="container mx-auto max-w-6xl flex-grow px-4 py-8 md:py-16">
+        <section id="new-section" className="w-full py-12 md:py-24 lg:py-32"></section>
         <About />
         <Projects />
       </main>
