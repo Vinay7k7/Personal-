@@ -15,10 +15,30 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const [isAiDialogOpen, setIsAiDialogOpen] = React.useState(false);
+  const cardRef = React.useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      cardRef.current.style.setProperty('--mouse-x', `${x}px`);
+      cardRef.current.style.setProperty('--mouse-y', `${y}px`);
+    }
+  };
 
   return (
     <>
-      <Card className="flex h-full transform flex-col overflow-hidden rounded-lg border-2 border-border bg-card shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-primary/20">
+      <Card 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        className="group relative flex h-full transform flex-col overflow-hidden rounded-lg border-2 border-border bg-card shadow-lg transition-transform duration-300 hover:scale-105"
+      >
+        <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" 
+             style={{
+                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), hsl(var(--primary) / 0.4), transparent 40%)',
+             }}
+        />
         <CardHeader>
           <div className="aspect-video overflow-hidden rounded-md">
             <Image
